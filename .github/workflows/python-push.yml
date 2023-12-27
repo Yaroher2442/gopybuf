@@ -23,13 +23,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install poetry
 
-      - name: Change to Custom Directory
-        run: cd py
-
-      - name: Install project dependencies
-        run: poetry install
-
       - name: Build and publish Python package
         run: |
+          cd py
+          poetry install
           poetry build
           poetry publish --username __token__ --password ${{ secrets.PYPI_TOKEN }}
