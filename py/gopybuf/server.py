@@ -47,7 +47,7 @@ class CustomServer:
 
     async def __call__(self, method_name: str, request: IncomingBytes) -> OutgoingBytes:
         method = self._mappings[method_name]
-        stream = CustomStream(method.request_type.parse(request), method.func)
+        stream = CustomStream(method.request_type.FromString(request), method.func)
         return OutgoingBytes(await stream())
 
 
