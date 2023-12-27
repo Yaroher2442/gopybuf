@@ -29,7 +29,7 @@ class CustomErr(Dict):
         self["error"] = str(e)
         self["traceback"] = traceback_str
 
-    def dump(self) -> bytes:
+    def __bytes__(self) -> bytes:
         return bytes(json.dumps(self), 'utf-8')
 
 
@@ -62,7 +62,7 @@ async def call_async(method_name: str, arg: IncomingBytes) -> Tuple[OutgoingByte
     try:
         return await _global_server(method_name, arg), ErrorBytes()
     except Exception as e:
-        return OutgoingBytes(), CustomErr(e, traceback.format_exc()).dump()
+        return OutgoingBytes(), ErrorBytes(CustomErr(e, traceback.format_exc()))
 
 
 def go_py_buf(method_name: str, arg: IncomingBytes) -> Tuple[OutgoingBytes, ErrorBytes]:
