@@ -21,8 +21,8 @@ class CustomStream(Generic[RecvType, SendType]):
     async def send_message(self, message: SendType) -> None:
         self.__resp = message
 
-    def __call__(self, *args, **kwargs) -> SendType:
-        self.__target_call(self)
+    async def __call__(self, *args, **kwargs) -> SendType:
+        await self.__target_call(self)
         return self.__resp
 
 
