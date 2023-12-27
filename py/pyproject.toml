@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "gopybuf"
+version = "0.0.1"
+description = "Python-side code to use in gopybuf"
+authors = ["Yaroher2442 <stolbunov.yaroslav@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+[tool.poetry.group.dev.dependencies]
+Jinja2 = "^3.1.2"
+betterproto = { version = "2.0.0b5", extras = ["compiler"], allow-prereleases = true }
+grpcio-tools = "^1.54.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
