@@ -32,8 +32,4 @@ jobs:
       - name: Build and publish Python package
         run: |
           poetry build
-          poetry publish --username ${{ secrets.PYPI_USERNAME }} --password ${{ secrets.PYPI_PASSWORD }}
-
-secrets:
-  PYPI_USERNAME: __token__
-  PYPI_PASSWORD: pypi-AgEIcHlwaS5vcmcCJGYwZTAxZTA3LWFmYTctNGQ4YS05ZWFmLTIzNTQ0OWJkMTY0MwACKlszLCIyNTUwNzE3OC04YTAwLTQ4ZWYtOThiNy0wMWUzMjE0NGE4YmMiXQAABiAUzdSF_4YPxOS0B1lV4t8jA9G7Z-TISf_9JSZCmpW8ww
+          poetry publish --username __token__ --password ${{ secrets.PYPI_TOKEN }}
