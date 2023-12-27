@@ -35,7 +35,7 @@ class CustomErr(Dict):
 
 class CustomServer:
     _instance: CustomServer = None
-    _mappings: Dict[str, Handler]
+    _mappings: Dict[str, Handler] = {}
 
     def __new__(cls, *args, **kwargs):
         if not cls._instance:
