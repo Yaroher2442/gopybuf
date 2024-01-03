@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "gopybuf"
-version = "0.0.5"
+version = "0.0.6"
 description = "Python-side code to use in gopybuf"
 authors = ["Yaroher2442 <stolbunov.yaroslav@gmail.com>"]
 
