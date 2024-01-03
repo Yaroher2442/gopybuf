@@ -96,6 +96,7 @@ func (c *clientConn) Invoke(_ context.Context, method string, args any, reply an
 	}
 }
 
+// NewStream TODO: implement it
 func (c *clientConn) NewStream(ctx context.Context, desc *grpc.StreamDesc, method string, opts ...grpc.CallOption) (grpc.ClientStream, error) {
 	//TODO implement me
 	panic("implement me")
@@ -159,11 +160,10 @@ func (c *clientConn) init() error {
 	return nil
 }
 
-func NewClient(moduleName, funcName, libsPath string) (Client, error) {
+func NewClient(moduleName, funcName string) (Client, error) {
 	c := &clientConn{
 		moduleName: moduleName,
 		funcName:   funcName,
-		libsPath:   libsPath,
 	}
 	err := c.init()
 	if err != nil {
@@ -172,28 +172,3 @@ func NewClient(moduleName, funcName, libsPath string) (Client, error) {
 	}
 	return c, nil
 }
-
-//func main() {
-//	client, createClientErr := NewClient("example", "call_go_py", "./")
-//	if createClientErr != nil {
-//		panic(createClientErr)
-//		return
-//	}
-//	stub := gopybuf.NewTestServiceClient(client)
-//	test, err := stub.Test(context.Background(), &gopybuf.TestMessage{
-//		Name:   "test",
-//		Age:    1,
-//		Scores: []int32{1, 2, 3},
-//	})
-//	if err != nil {
-//		println(err.Error())
-//		return
-//	}
-//	fmt.Printf("test: %v\n", test)
-//}
-
-//C.initializePython()
-//println("Hello World from Golang")
-//C.callPythonHelloWorld()
-//C.finalizePython()
-//println("END FROM GO")
